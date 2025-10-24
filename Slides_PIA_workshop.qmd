@@ -1,0 +1,1867 @@
+---
+title: "Starting a data project"
+author: "Émilien Schultz - emilien.schultz@ensae.fr"
+format: 
+    # pptx
+    revealjs:
+        slide-number: true
+---
+
+# S1 - Starting a data science project
+
+## Technical skills for the Policy-in-action Project
+
+- You : carring out a [**collaborative** **data** project](https://programmes.polytechnique.edu/master/programmes/master-data-and-economics-for-public-policy-x-ensae-telecom )
+    - What's your background ?
+- Me : **helping** on data & code
+    - emilien.schultz@ensae.fr / office 4044
+
+---
+
+## General ideas of this workshop
+
+- Discussing best practices for collaboration
+- Showase existing computational resources
+- Starting the structure of a project
+- Getting familiar with code versioning (Git/GitHub)
+- Discussing about coding practices
+
+---
+
+## Planned schedule
+
+- **Session 1** (26/09/2025): Data science project : Management, data and computation
+- **Session 2** (23/10/2025) : Code management and best practices
+- Group support for projects (zoom / office)
+
+All information here : [https://github.com/emilienschultz/pia-dataproject-2025](https://github.com/emilienschultz/pia-dataproject-2025)
+
+
+---
+
+## Today
+
+1. Values & tools for data science
+2. Manipulate data
+3. Basics of Command Line Interfaces / *nux
+
+*Hands on*
+
+
+
+# Values & tools for data science
+
+## What is your previous data science experience ?
+
+- What aspect of data analysis do you like (if any) ?
+- What is the task you found the most difficult ?
+- What software do you use ?
+
+---
+
+## General workflow
+
+![](./img//data-workflow.png){fig-align="center"}
+
+
+---
+
+## Main values for public data analysis
+
+- Reproducibility
+- Openess
+- Explainability
+- (Maintainability)
+
+---
+
+## What is reproducibility
+
+A result or project is never not a one shoot
+
+A result is reproducible when the same analysis steps performed on the same dataset consistently produces the same answer.
+
+---
+
+##
+
+![](./img/howscientist.png){fig-align="center"}
+
+---
+
+## Different flavour of reproducibility
+
+![](./img/differentrepro.jpg){fig-align="center"}
+
+---
+
+## What it entails to be reproducible
+
+Be able to walk the path again : connecting data, software and questions
+
+![](./img/repro.jpg){fig-align="center"}
+
+---
+
+## Openness
+
+Both for data and code, create the possibility of reproducibility
+
+[![](./img/datafriend.jpeg){fig-align="center"}](https://www.smbc-comics.com/comic/science-fictions)
+
+*Not always possible for data*
+
+---
+
+## Meaning of openness
+
+- Clear methodologies
+- Data accessibility
+- Reusable software
+
+---
+
+## Explainability & Maintainability
+
+The idea is to increase stability and the possibility to modify elements
+
+- Avoid dependencies of paid services and black boxes
+- Use technologies you understand
+- Use technologies used by others
+
+---
+
+## The challenge of working together
+
+data science project / software programming
+
+- Sharing storage
+- Communicating over various channels
+- Keeping track of various versions
+- ...
+
+--- 
+
+## Tools : who's who, and what do you use ?
+
+![](./img/tools.webp){fig-align="center"}
+
+---
+
+## Software has consequences
+
+- Open/proprietary
+- Software/programming
+- Specialized/general purposes
+
+
+![](./img/allyouneed.jpeg){fig-align="center"}
+
+---
+
+## You can resist genAI (yes, it is hard)
+
+Different uses, some more clever than other.
+
+![](./img/genai.jpeg){fig-align="center"}
+
+---
+
+## The role of programming in data science
+
+Important for the flexibility of the workflow
+
+- Different languages
+- Different tools
+- Different workflow
+
+**What do you use for programming ?**
+
+---
+
+## Scripts, notebooks and packages
+
+- Notebooks allows litterate programming
+- Very useful for data exploration / prototyping
+    - Convert to dashboard
+- Scripts are better for stability
+- A pathway from scripts to packages
+
+**What is your experience with notebooks ?**
+
+---
+
+
+## The unholy trinity
+
+- Computational service
+- Scripts/treatments
+- Data
+
+**What hardware do you need ?**
+
+---
+
+## Where could you run your code ?
+
+- Local computer
+    - Limit of ressources / not collaborative / messy
+- Cloud services as Google Colab, Kaggle
+    - Proprietary systems
+    - Limit of ressources
+- Dedicated institution services (Onyxia, Jean Zay)
+    - Condition of access
+    - Availability
+
+**How to size ressources ?**
+
+---
+
+## Onyxia
+
+- [GENES Data Lab](https://onyxia.lab.groupe-genes.fr/account/user-interface), based on a plateforme developed by INSEE
+- Possibility to create temporary services
+
+
+    - catalogs and services launched by the users (Kubernetes access)
+    - a file browser (S3 access)
+    - secret browser (Vault access)
+
+[Starting with Onyxia](https://docs.onyxia.sh/user-doc/user-guide)
+
+---
+
+## Hands on
+
+- Connext to Onyxia : https://onyxia.lab.groupe-genes.fr
+- Create a Jupyter Lab project with 2 CPU and 20 Go of RAM
+- Run a script that get the course page (you can use genIA ^^)
+
+
+**If you need a project group on Onyxia, please send a mail**
+
+
+# Manipulate data
+
+## Data quality is central
+
+![](./img/garbagein.jpeg){fig-align="center"}
+
+## In theory
+
+![](./img/dataprocess.jpeg){fig-align="center"}
+
+---
+
+## In reality
+
+![](./img/realdata.jpeg){fig-align="center"}
+
+---
+
+## A practical middle ground 
+
+![](./img/realxp.gif){fig-align="center"}
+
+---
+
+
+## So many questions...
+
+- How to scrap online data ?
+- What are the best format to use ?
+- What is encoding ?
+- What can I do if my dataset is too large ?
+- What can I do if my scripts take too much time ?
+- What if my computer is too old ?
+- ...
+
+---
+
+## Different stages
+
+![](./img/diagram-data-workflow-steps.png){fig-align="center"}
+
+
+---
+
+## What is FAIR data
+
+![](./img/faire.svg){fig-align="center"}
+
+---
+
+## Rule 0 : know your data
+
+- Have a look to your data
+    - Duplicates
+    - Empty data
+- Before starting complex treatments
+    - Do simple treatments
+    - Ask yourself if the question and the data match
+
+---
+
+## Rule 1 : Structuring a Project
+
+- Separate code from data
+    - Different logic
+    - Different tools
+- Document / Comment your productions
+    - Be explicit (variables, document file)
+    - *Yes, it is boring, but useful*
+- Modularize : create distinct elements
+    - One file per element
+    - Function rather than repeating code
+
+
+---
+
+## There will always be another monday
+
+![](./img/comment.png){fig-align="center"}
+
+---
+
+## Rule 2 : a common file system
+
+- Organize your project
+    - **data** in a data directory
+    - **scripts** in a script directory
+    - *what else ?*
+- Create a common place to store it
+
+## Example of a file system
+
+```
+project-name/
+│
+├── README.md
+├── data/
+│   ├── raw/                   # Unprocessed, original data
+│   ├── intermediate/          # Data after cleaning
+│   └── final/                 # Cleaned, analysis-ready data
+├── src/                
+│   ├── notebooks/              
+│   └── scripts/  
+├── docs
+└── outputs/ 
+    ├── figures/
+    ├── tables/
+    └── reports/
+```
+
+---
+
+## Ideally, a DMP
+
+[Data management plan](https://guides.libraries.psu.edu/c.php?g=1244435&p=9105494) : Document that list the data and how you handle it
+
+- What types of data will I have?
+- What kind of file formats will my data be in?
+- Would a user of the data require special software to open/use the data?
+- What is the approximate volume of data to be generated?
+- What methods will I utilize to collect the data, including how they will be standardized for consistency and future re-use?
+- What is your naming and versioning strategy for storing the data that is collected? 
+- ...
+
+---
+
+
+## Rule 3 : accept to spend time on data preparations
+
+![](./img/iceberg.png){fig-align="center"}
+
+---
+
+## Different types of data
+
+- Small (< 1 Go) : no pressure
+- Middle (< 10 Go) : some problem can arise
+- Large (~ 100 Go) : take some time to think
+
+**Could you think of examples for each category ?**
+
+---
+
+## Use adequate tools
+
+
+![](./img/exceldatabase.jpeg){fig-align="center"}
+
+(in fact Excel-like tooks are fine for specific uses)
+
+
+---
+
+## Let's talk about data format
+
+Format is both information & affordance
+
+[![](./img/dataloss.png){fig-align="center"}](https://xkcd.com/1683/)
+
+---
+
+## What are the best data format
+
+![](./img/normformat.png){fig-align="center"}
+
+---
+
+## My suggestion
+
+There is no silver bullet, but : open format + think the way you need to access them
+
+- CSV : read by chunck, easy to check
+- Parquet : compressed + duck duck go
+- SQLITE : if relational
+- ...
+
+---
+
+## Data architecture : aim for tidy data
+
+- Separate raw data from transformed data
+- Move from unstructured to structured
+- Tidy data
+
+![](./img/tidydata.png){fig-align="center"}
+
+---
+
+## Avoid to correct your data manually
+
+Build a workflow - write some scripts
+
+![](img/datafix.jpg){fig-align="center"}
+
+---
+
+## The case of Big Data
+
+Favour small data if you can
+
+![](./img/smalldata.png){fig-align="center"}
+
+---
+
+## Otherwise
+
+**Solution 1 : reduce your data**
+
+- Work on subset
+- Sample
+- Batch
+
+**Solution 2 : parallelize**
+
+- Dedicated data architecture
+- Parallelize (Dask)
+- Dedicated tools : [Xan](https://github.com/medialab/xan) for csv
+
+---
+
+## Be aware of data privacy
+
+![](./img/privacy.png){fig-align="center"}
+
+---
+
+## How to conciliate privacy with reproducibility
+
+- [As open as possible, as closed as necessary](https://rea.ec.europa.eu/open-science_en)
+- Anonymize / pseudonymize
+- Agregate
+- Use synthetic data
+
+---
+
+## How to store the data
+
+During the project
+
+- institutional solutions (S3 Onyxia)
+- cloud solutions
+
+After the project
+
+- Zenodo, Figshare
+
+---
+
+## Hands on
+
+- Get the French association database https://www.data.gouv.fr/datasets/repertoire-national-des-associations/
+- Build a parquet file
+- Upload the database on the S3
+- Launch a service that can access the S3
+- Create a tidy data file with associations mentionning data
+
+
+---
+
+##
+
+```python
+
+import pandas as pd
+df=pd.read_parquet('s3://eschultz-ensae/association.parquet',  
+        storage_options={
+        "client_kwargs": {
+            "endpoint_url": S3_ENDPOINT_URL,
+        },
+        'key' :os.environ["AWS_ACCESS_KEY_ID"], 
+        'secret' :os.environ["AWS_SECRET_ACCESS_KEY"], 
+        'token' : os.environ["AWS_SESSION_TOKEN"]
+    })
+
+```
+
+# Introduction to CLI
+
+
+
+## The great divide
+
+2 different traditions/philosophies
+
+- graphical user interface (GUI)
+    - mouse + everything visible
+    - massive software
+- command-line interface (CLI) 
+    - keyboard (text-based) + everything hidden
+    - one command per tool
+
+> small, simple programs with clean interfaces can be combined to build larger systems
+
+---
+
+## What is the command line interface ?
+
+> A command-line interface (CLI) is a means of interacting with a computer program by inputting lines of text called command-lines
+
+> A shell/terminal is a process that serves as a command processor
+
+- In the past, every computer
+- Now, mainly unix systems (linux, mac...)
+    - And in programming
+- Different terminal (bash, zsh...)
+
+---
+
+## Why do I have to care about CLI ?
+
+- Formalize all treatments to allow reproducibility
+- To be able to use different types of remote computer (high-performance computing)
+- To mix it with scripts (Python, R)
+- To use specific tools
+- Combine existing tools into powerful pipelines
+
+---
+
+![](./img/matrix-cli.jpg){fig-align="center"}
+
+---
+
+## CLI is a general philosophy
+
+- Build-in commands (Unix/linux)
+-  OS specific commands (Windows, Mac)
+- Specific tools command (once installed)
+
+Using CLI mix general principles and some familiary with unix systems.
+
+::: {.callout-note}
+## For instance always find help the same way
+:::
+
+
+---
+
+## *nux systems in research
+
+Linux (and Unix)
+
+- largely used in research
+- infrastructure of computing resources (Linux runs all the TOP500 supercomputer)
+- pervasive in a lot of tools
+
+Beyond
+
+- Free and open (nobody owns it)
+- Diversity of versions
+
+---
+
+## Some info on GNU-Linux
+
+- originated from Unix (1969); opened up by Linus Torvalds’ “Linux” kernel (1991)
+- different flavours : Debian (Ubuntu), Red Hat (CentOS), SUSE
+- Kernel / Desktop experience
+- centrality of command line
+- possibility to be close to the hardware / low level operations
+
+---
+
+## Some examples
+
+::: {.callout-note}
+## search all files with a .r extension
+
+``` bash
+find ~/Documents -type f -name "*.r"
+```
+
+:::
+
+::: {.callout-note}
+## create a python virtual environment, install a package and run a script
+``` bash
+conda create -n new_env python=3.8
+pip install pandas
+python script.py
+```
+:::
+
+::: {.callout-note}
+## connect to a remote computer with ssh
+
+``` bash
+ssh -Y eschultz@cca.in2p3.fr 
+```
+
+:::
+
+---
+
+## You don't have to master all of it 
+
+- You will use only specific command
+- You can search/chatgpt it
+- And you can make different attemps : it is a **dialogue**
+
+![](./img/tar.png){fig-align="center"}
+
+---
+
+## Files, Directories, and Processes
+ 
+- A **file** is a collection of data held in non-volatile storage such as a hard disk. It has a location in the file system called a path. Paths will typically be a series of words (directory names) separated by forward slashes, /. (dot files are hidden)
+• A **directory** is a special type of file holding information about other files. It is the equivalent of a folder in Windows. Think of a directory as a container for other files or directories.
+• A **process** is an executing program that requires volatile storage such as RAM, as well as CPU resources. Processes may be short in duration, such as a process that prints a file to the screen, or they may run indefinitely
+
+---
+
+## Manage a filesystem
+
+- file/directory (folder)
+- computer filesystem organiserd from a drive/root
+    - `/`
+    - `C:\`
+- The file system is a tree 🌲
+   - **Absolute path** : from the root
+       - It depends on the computer specific organization
+   - **Relative path** : from current location 
+       - Each software is running from somewhere : its current location `.
+
+---
+
+## The structure of a command
+
+![](./img/shell_command_syntax.svg){fig-align="center" height="150px"} 
+
+- usally a command is a name
+- with options indicated with flag (-o VALUE) or full name (-option VALUE)
+- and different arguments (it can be quite long and confusing)
+
+::: {.callout-note title="For instance"}
+a man page `man command` or for tools an  help : `command --help`
+:::
+
+
+
+---
+
+## First commands for the filesystem
+
+- `pwd` : the current working directory
+- `ls` : list all the files in a folder
+- `cd` : change directory to a specific path
+- `mkdir` : create a folder (-p for nested)
+- `rm` : remove a file
+- `touch` : create an empty file
+- `cp` : copy a file
+- `mv` : move a file
+
+*Let's have a quick look*
+
+---
+
+## Tips
+
+- Up/down arrows go up and down the list of previous commands
+- Use tab to facilitate completion
+- `..` : parent folder
+- `~` : home
+- history <N> : display a list of the last N commands
+- Wildcard matching : *
+
+---
+
+## More useful commands
+
+- `echo` : print text
+- `cat` : concatenate text then display
+- `tail` and `head` : display the beginning / end of a file
+- `find`
+- `wc` : word count
+- `sort` : sort
+- `grep` :  contraction of ‘global/regular expression/print’
+
+---
+
+## More (just to know they exist) !
+
+- `top` : see processes running
+- `ps` : see current processes
+- `kill`: kill a process
+- `df`: see disk space
+- `du`: disk usage
+    - `du -sh * `: see disk usage of all files
+- `vim` or `nano` : edit text files
+- `curl` : download files
+
+
+---
+
+## File permissions
+
+Permissions are what the user can do with the file
+
+- `ls -l` : print “long format” information ; file mode is shown as read-write-execute (rwx) bits for user, group, others
+- `chmod u+x file1` : change the file mode so that file1 can be executed like a command by the user
+- `chmod 600 file2` : change the file mode so that file2 can be read 
+
+---
+
+## Successive commands : the pipe
+
+- output on files `>` (w) and `>>` (a)
+- pipe `|`
+
+The number of lines : 
+
+
+``` bash
+ls -l | wc -l
+```
+
+::: {.callout-tip}
+## Variables
+`$HOME`, `$PATH`
+:::
+
+---
+
+## Environment Variables
+ - `env` : print names and values of all environment variables defined in the current shell
+- `export VAR=val`: set local variable VAR to the string “val” and export it to the environment
+- `echo $VAR`: print the value of variable VAR
+- `which <command>` :show the full path to the given command, as found by checking the directories in the PATH environment variable, in order
+
+---
+
+## Install a tool
+
+- A lot of tools are software you need to install
+- Each OS has a package manager
+    - Debian : apt-get
+    - macOS : brew
+    - Windows : choco
+
+``` bash
+sudo apt-get update
+sudo apt-get install XXXX
+```
+
+---
+
+## Powerful tools exist
+
+For instance, **xan** https://github.com/medialab/xan
+
+> xan is a command line tool that can be used to process CSV files directly from the shell. It has been written in Rust to be as performant as possible and **can easily handle very large CSV files (Gigabytes)**. It is also able to leverage parallelism (through multithreading) to make some tasks complete as fast as your computer can allow. It can easily preview, filter, slice, aggregate, sort, join CSV files, and exposes a large collection of composable commands that can be chained together to perform a wide variety of typical tasks.
+
+---
+
+## Hands on
+
+- Run a Jupyter lab server
+- Create the following filesystem
+
+```
+2024-11-06/
+└── data
+   ├── processed
+   └── raw
+```
+
+- move the dataset of association in it
+- count the number of line mentionning data
+
+---
+
+## Ressources
+
+- [The Turing Way. Guide for Reproducible Research](https://book.the-turing-way.org/)
+- Video [Linux for the researchers, Steve Lantz](https://www.youtube.com/watch?v=n8s6j6Yrcg8)
+- [The Unix Shell from Software Carpentry](https://swcarpentry.github.io/shell-novice/01-intro.html)
+- [Stoudt, S., Jernite, Y., Marshall, B., Marwick, B., Sharan, M., Whitaker, K., & Danchev, V. (2024). Ten simple rules for building and maintaining a responsible data science workflow. PLOS Computational Biology, 20(7), e1012232.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1012232)
+- [Wickham, H. (2014). Tidy data. Journal of statistical software, 59, 1-23.](https://vita.had.co.nz/papers/tidy-data.pdf)
+
+
+
+# S2 - Code management
+
+
+# Command Line Interface (reminder)
+
+
+## Two philosophies
+
+- **GUI** = Graphical User Interface
+    - mouse + everything visible
+    - "massive" software
+- **CLI** = Command-Line Interface
+    - keyboard (text-based) + everything hidden
+    - "one function tool"
+
+> small, simple programs with clean interfaces can be combined to build larger systems
+
+---
+
+
+## What is the command line interface ?
+
+> A command-line interface (CLI) is a means of interacting with a computer program by inputting lines of text called command-lines
+
+- In the past, every computer
+- Now, mainly unix systems (linux, mac...)
+    - And in programming
+
+---
+
+
+## Why do I have to care about CLI ?
+
+- Reseach is running on Unix/Linux system
+    - HCP
+- CLI helps to automate complex tasks
+- Useful philosophy in research (reductionism)
+- Relation programming/CLI
+- To impress your friends & family
+
+---
+
+## *nux systems in research
+
+Linux/Unix
+
+- largely used in research
+- infrastructure of computing resources (Linux runs all the TOP500 supercomputer)
+- pervasive in a lot of tools
+
+Beyond
+
+- Free and open (nobody owns it)
+- Diversity of versions
+
+
+
+---
+
+## This is overtly complicated !
+
+![](./img/matrix-cli.jpg){fig-align="center"}
+
+There are cheatsheets - so just learn how to use it
+
+
+---
+
+
+## You don't have to master all of it 
+
+- You will use only specific command
+- You can search/chatgpt it
+- And you can make different attemps : it is a **dialogue**
+
+![](./img/tar.png){fig-align="center"}
+
+
+---
+
+## HPC - know your CLI
+
+[![](./img/jeanzay.png){fig-align="center"}](http://www.idris.fr/media/su/idrischeatsheet.pdf)
+
+
+
+---
+
+
+## Small examples
+
+::: {.callout-note}
+## search all files with a .r extension
+
+``` bash
+find ~/Documents -type f -name "*.r"
+```
+
+:::
+
+
+
+::: {.callout-note}
+## connect to a remote computer with ssh
+
+``` bash
+ssh -Y eschultz@cca.in2p3.fr 
+```
+
+:::
+
+::: {.callout-note}
+## create a python virtual environment, install a package and run a script
+``` bash
+conda create -n new_env python=3.8
+pip install pandas
+source activate new_env
+python script.py
+```
+:::
+---
+
+## First, the structure of commands
+
+
+![](./img/shell_command_syntax.svg){fig-align="center" height="150px"} 
+
+- a **name** for a tool (for instance `find`)
+- **options** with flag (-o VALUE / --option VALUE)
+- **argumentS** (potentialy multiple)
+
+::: {.callout-note title="For instance"}
+a man page `man command` or for tools an  help : `command --help`
+:::
+
+---
+
+## Second, the console / terminal / shell
+
+- The place to type commands
+- Available on unix systems (unix shell)
+    - Different flavours : Bash[^bash], Zsh (but common philosophy)
+- Accessible in different environnement 
+    - Rstudio / Jupyter / ...
+    - On Windows : [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+
+[^bash]: the Bourne Again SHell — so-called because it’s derived from a shell written by Stephen Bourne
+
+---
+
+
+## Third : Files, Directories, and Processes
+ 
+- A **file**  = collection of data held in non-volatile storage such as a hard disk. It has a location in the file system called a path. 
+- A **directory** is a special type of file holding information about other files. Fundamentally, a directory is a container for other files or directories.
+- A **process** is an executing program that requires volatile storage such as RAM, as well as CPU resources. 
+
+---
+
+## Fourth : The file system
+
+- Access the data : file/directory (folder)
+- Computer filesystem organised from a drive/root
+    - `/`
+    - `C:\`
+- The file system is a tree 🌲
+   - **Absolute path** : from the root
+       - It depends on the computer specific organization
+   - **Relative path** : from current location 
+       - Each software is running from somewhere : its current location `.`
+
+---
+
+![](./img/linuxfilesystem.webp){fig-align="center"}
+
+---
+
+
+## Accessing to a terminal to practice
+
+- On your computer
+- On Onyxia :
+    - INSEE : https://www.sspcloud.fr/
+    - GENES : https://onyxia.lab.groupe-genes.fr/
+
+Launch a terminal
+
+---
+
+
+
+## First commands
+
+- `man` : manual page
+- `pwd` : the current working directory
+- `ls` : list all the files in a folder
+- `cd` : change directory to a specific path
+- `mkdir` : create a folder (-p for nested)
+- `rm` : remove a file (`-r` for recursive/directory)
+- `touch` : create an empty file
+- `cp` : copy a file
+- `mv` : move a file
+
+*Let's have a quick look*
+
+---
+
+## Tips
+
+- `Up/down arrows` go up and down the list of previous commands
+- Use Tab to facilitate completion
+- `..` : parent folder
+- `~` : home
+- `history <N>` : display a list of the last N commands
+- Wildcard matching `*`
+
+---
+
+
+## Exercises 1
+
+::: {.callout-tip title="List all folders"}
+:::
+
+
+::: {.callout-tip}
+## Create this filesysteme and go in the first folder
+```
+phddigitalskills/
+└── data
+   ├── processed
+   └── raw
+```
+:::
+
+::: {.callout-tip}
+## How to list the size of the files
+Don't hesitate to search online
+:::
+
+
+## Corrections 1
+
+::: {.callout-tip title="List all folders"}
+``` bash
+ls -la
+```
+:::
+
+
+::: {.callout-tip}
+## How to list the size of the files
+In Linux
+``` bash
+ls -l --block-size=M
+```
+In mac
+``` bash
+ls -lh
+```
+:::
+
+::: {.callout-tip}
+## Create this filesystem
+``` bash
+mkdir -p 2024-11-06/data
+cd 2024-11-06/data
+mkdir processed
+mkdir raw
+```
+:::
+
+::: {.callout-tip}
+## How to list the size of the files
+In Linux
+``` bash
+ls -l --block-size=M
+```
+
+In mac
+``` bash
+ls -lh
+```
+:::
+
+---
+
+
+## More useful commands
+
+- `echo` : print text
+- `cat` : concatenate text then display
+- `tail` and `head` : display the beginning / end of a file
+- `find` : find files
+- `wc` : word count
+- `sort` : sort
+- `grep` :  contraction of ‘global/regular expression/print’
+- `wget` : download files 
+
+And of course `sudo`
+
+---
+
+## More (just to know they exist) !
+
+- `top` : see processes running
+- `ps` : see current processes
+- `kill`: kill a process
+- `df`: see disk space
+- `du`: disk usage
+    - `du -sh * `: see disk usage of all files
+- `vim` or `nano` : edit text files
+- `curl` : download files
+
+
+---
+
+## File permissions
+
+Permissions are what the user can do with the file
+
+- `ls -l` : print “long format” information ; file mode is shown as read-write-execute (rwx) bits for user, group, others
+- `chmod u+x file1` : change the file mode so that file1 can be executed like a command by the user
+- `chmod 600 file2` : change the file mode so that file2 can be read 
+
+---
+
+## Successive commands : the pipe
+
+- output on files `>` (w) and `>>` (a)
+- pipe `|`
+
+The number of lines : 
+
+
+``` bash
+ls -l | wc -l
+```
+
+::: {.callout-tip}
+## Variables
+`$HOME`, `$PATH`
+:::
+
+---
+
+## Environment Variables
+ - `env` : print names and values of all environment variables defined in the current shell
+- `export VAR=val`: set local variable VAR to the string “val” and export it to the environment
+- `echo $VAR`: print the value of variable VAR
+- `which <command>` :show the full path to the given command, as found by checking the directories in the PATH environment variable, in order
+
+---
+
+## Install a tool
+
+- A lot of tools are software you need to install
+- Each OS has a package manager
+    - Debian : apt-get
+    - macOS : brew
+    - Windows : choco
+
+``` bash
+sudo apt-get update
+sudo apt-get install XXXX
+```
+
+---
+
+## Script bash - from command to file
+
+A file with extension `.sh` with lines of bash commands
+
+```bash
+#!/bin/bash
+ARG1=$1
+ARG2=$2
+DIR=/home/test
+mkdir -p $DIR/$ARG1/$ARG2
+touch $DIR/$ARG1/$ARG2/test.txt
+```
+
+First line (the shebang) tells the interpreter to use bash
+
+::: {.callout-tip}
+## Executable
+`chmod +x script.sh`
+`bash script.sh sec1 chap2`
+:::
+
+
+
+---
+
+
+
+## Exercises 2 (practice)
+
+::: {.callout-tip}
+## Download the xkcd pictures file
+``` bash
+curl -L -o img.zip "https://www.dropbox.com/scl/fi/mv6ex82vws3i5ljn3ck6g/img.zip?rlkey=l7w4hgazna4bf0lfahrzuoyn2&st=j76lm525&dl=1"
+```
+:::
+
+::: {.callout-tip}
+## Unzip the data
+:::
+
+::: {.callout-tip}
+## Find all files that mention science
+:::
+
+::: {.callout-tip}
+## How many files mention "science" ?
+:::
+
+::: {.callout-tip}
+## Get the line in the jsonl file for a specific picture with grep
+:::
+
+
+## Corrections 2
+
+::: {.callout-tip}
+## Unzip the data
+``` bash
+unzip img.zip -d xkcd
+```
+:::
+
+::: {.callout-tip}
+## Find all files that mention science
+
+``` bash
+find img -name "*science*"
+``` 
+:::
+
+::: {.callout-tip}
+## How many strips mention "science"
+
+``` bash
+find img -iname "*science*" | wc -l
+```
+
+or
+
+``` bash
+grep -i science dataset.jsonl | wc -l
+``` 
+:::
+
+::: {.callout-tip}
+## Get the line in the jsonl file for a specific picture with grep
+``` bash
+grep $NAME dataset/*.jsonl
+``` 
+:::
+
+
+
+
+
+# Introduction to code versioning tools (Git & Github)
+
+## In a nutshell
+
+- Programming can be messy
+- There is stuff to learn from open source community
+- Foster open science and reproducibility
+
+::: {.callout-tip title="Scientific programming"}
+All the practices involving code
+
+- solitary (you and your computer)
+- collaboratively (with colleagues)
+:::
+
+## What do we aim for ?
+
+- Know the difference between Git and Github
+- Commit your code
+- Available resources
+
+*This session will be language agnostique (on text)*
+
+::: {.callout-warning title="You don't have to know everything"}
+
+- There are numerous tutorials
+- The general philosophy comes first
+:::
+
+## Code & text versions
+
+![](./img/finalfinal.png){height=700 fig-align="center"}
+
+
+
+## Code versioning is old
+
+- Tools like RCS, CVS, or Subversion around since the early 1980s
+    - Some readings : [Industrial public goods: A genesis of the insertion of free software in Silicon Valley, Gabriel Alcaras, Sociologie du travail, 2020](https://journals.openedition.org/sdt/33283)
+- Leading the way to distributed tools
+
+**Somehow, it is a meta file organisation that keeps track of contributions and force you to (some) good practices**
+
+## Git and the Linux history
+
+- An history born from the free software movement
+- [The "bazar" of contribution](https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar)
+    - No vertical integration
+- Linux Torvald benevolent dictator
+    - [Obligatory point of passage](https://blog.brachiosoft.com/en/posts/git/)
+- The big question :
+    - How to collabore efficiently
+
+## Git - organizing the bazaar
+
+![](./img/gitxkcd.png){height=700 fig-align="center"}
+
+[Credits : xkcd](https://xkcd.com/1597/)
+
+---
+
+## What is Git exactly ?
+
+[Git is a distributed version control software system in CLI ](https://en.wikipedia.org/wiki/Git) :
+
+- record versions of text-based documents
+- manage changes (back, forward, fusions)
+- work collaboratively and manage  histories
+- natively installed on *nix systems
+
+Over time
+
+- embedded in other tools 
+- became an infrastructure of programming practices & OS
+
+
+---
+
+## Git is for code/text, not data
+
+::: {.callout-important title="Code & Data"}
+Git is not designed to version data
+
+Other solutions as [Git LFS](https://git-lfs.com/) or [Zenodo](https://zenodo.org/) for research.
+:::
+
+---
+
+## How to get git
+
+- Already installed on Linux/Mac
+- For windows : 
+    - https://gitforwindows.org/
+
+---
+
+
+## How does it work
+
+- A base unit : **the repository**
+- Sequences of volontary **snapshots** with a unique id
+- Different parallel branches / switches
+
+![[Source : Lutece.paris.fr](https://lutece.paris.fr/support/jsp/site/Portal.jsp?page=wiki&view=page&page_name=git&language=fr)](./img/branches.png){height=400 fig-align="center"}
+
+**A world in itself...**
+
+---
+
+
+
+##
+
+![](./img/git-committing.svg){height=600 fig-align="center"}
+
+
+---
+
+## Workflow
+
+
+You have a file, it can be :
+
+1. **Untracked**: the git repo does not include it in commits, save
+any changes, etc. Default state for new files
+2. **Unmodified**: tracked files that have not been modified since the
+version stored in the last commit
+3. **Modified**: tracked files that have been modified since the
+version stored in the last commit
+4. **Staged**: the changes made at the time you added the file (but
+not newer changes since then) will be included in the next
+commit
+5. **Commit**: saved the snapshot as a dedicated element
+
+
+---
+
+## Before starting...
+
+Each contributor is identified
+
+- `git config --global user.name "Your Name"`
+- `git config --global user.email "Your Email"`
+
+---
+
+## First repository
+
+- [First configure git](https://swcarpentry.github.io/git-novice/02-setup.html)
+- Then, initializing a git repo (CLI is useful)
+    - `git init` => a .git directory
+    - `git status`
+    - `git add FILE` => staging area
+    - `git diff HEAD`
+    - `git commit` -m "MESSAGE" => -am to skip the stagging era
+    - `git log`
+
+---
+
+## Git messages
+
+Clear messages if possible...
+
+![](./img/git_commit_2x.png){height="500px" fig-align="center"}
+
+[Credit: xkcd](https://xkcd.com/1296/)
+
+---
+
+## A complete record of the data
+
+Possibility to see the differences (diff) between steps
+
+- with specific commits
+- with specific files
+    - `git diff IDCOMIT FILE`
+
+For instance `git diff HEAD^` for the last commit
+
+---
+
+## Possibility to restore
+
+Each state is stored with a 40-digit hash with a 7-digit summary.
+
+Since there is a complete history, possibility to :
+
+- restore file/files
+    - `git restore FILE`
+    - `git reset --hard IDCOMMIT`
+- go back to a commit
+    - `git checkout IDCOMMIT`
+
+---
+
+
+
+
+## Exercise 1
+
+::: {.callout-tip title="Create a repository on your computer"}
+:::
+
+::: {.callout-tip title="Add a new file called README.md"}
+
+- Add a content
+- Commit it
+- Change it a bit
+- Commit it again
+- Return to the initial state
+:::
+
+---
+
+
+## Branches - parallel realities
+
+Why ? Test things without modifying the principal branch
+
+- Not only one succession of commits
+- But different series in parallel
+- And the possibility to merge from one branch to another
+
+How ?
+
+- Create a branch : `git branch NAME` or `git checkout -b NAME`
+- Change to a branch `git switch NAME`
+
+*Branches are cheap and easy, use them*
+
+
+---
+
+
+## Merging branch : 2 possibilities
+
+- `git merge BRANCH` : new joined commit
+- `git rebase BRANCH` : add new commits to linear history
+
+![](./img/rebasemerge.png){fig-align="center"}
+
+
+---
+
+## And if there are conflicts ?
+
+- Markers in the files showing the conflict;
+- You will have to arbitrate
+- If needed, intervene in the documents <<<<<<< HEAD
+
+![](./img/git-merge.gif){fig-align="center"}
+
+---
+
+## Exercise 4
+
+::: {.callout-tip title="Collaborate"}
+- Create a branch
+- Swich to the branch
+- Make a modification
+- Go back to the main
+-   What happened ?
+- Do a modification
+- Try to merge
+- Delete the branch
+:::
+
+
+---
+
+## .gitignore file
+
+Possibility to exclude files from the tracking
+
+- Data
+- Config files
+- Private information
+
+Add them in a file called .gitignore
+
+
+# From local to cloud
+
+## Github genesis
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+- A startup launched in 2008 
+    - Bought by Microsoft in 2018 (evolution of OS)
+- Basically : Git on cloud + services
+    - Centralized repository
+- A system of rights to access (maintainer, contributor, etc.)
+- A grammar of operations based on Git, with specificities
+:::
+
+::: {.column width="30%"}
+
+![](./img/octocat.jpg)
+[Build your octocat](https://myoctocat.com/build-your-octocat/)
+
+:::
+::::
+
+## A plateform for projects
+
+- A central repository that connect developers and users
+- Allow contributions to be visible
+- Allow discussions
+
+Why to use it ?
+
+- Reproducibility / Transparency
+- Ease of collaboration
+- Best practices integration
+- Work from multiple machines seemlessly
+
+## Github : also a social media
+
+- A showcase of projects
+    - Stars
+- A platform to stay updated
+    - Versions & contributions
+- A space for socializing & exchanging
+    - Issues
+    - Communities
+
+More and more used in research
+
+## Let's have a look : the most famous repository
+
+- [Most famous repository](https://github.com/EvanLi/Github-Ranking)
+- [Map of Github](https://anvaka.github.io/map-of-github/#2/0/0) 
+
+<!-- Would be interesting to dig in the existing map of github -->
+
+## A lot of services
+
+- Actions (Continuous integrations)
+- Github pages
+- Wiki
+- ...
+
+## Github is not alone
+
+Other open-source code-sharing platform ("forges" in French)
+
+- [SourceForge](https://sourceforge.net/)
+- [Bitbucket](https://bitbucket.org/product/)
+- [Gitlab](https://about.gitlab.com/)
+- [Gitea](https://about.gitea.com/)
+
+## Diversity of uses
+
+- CLI (the "bare" philosophy)
+- Integrated in other tools
+    - VS Code
+    - R Studio
+    - Jupyter
+- GUI 
+    - [Github Desktop](https://desktop.github.com/download/)
+
+
+
+## Let's have a look with CLI
+
+Let's put our slides on Github
+
+- git init / git clone
+- **git pull**
+- git status
+- git remote -v
+- git add
+- git commit
+- **git push**
+- ...
+
+
+
+## Exercises 2
+
+::: {.callout-tip title="Create your github account"}
+:::
+
+::: {.callout-tip title="Open a issue with your name"}
+Attendance certificate
+:::
+
+
+::: {.callout-tip title="Clone the slides repository"}
+
+https://github.com/emilienschultz/pia-dataproject-2025
+:::
+
+
+
+## Authentification
+
+It can sometime be tricky...
+
+- HTTPS
+- SSH : create your key and register it
+- Token
+
+## How to set auth
+
+- With SSH key if you are using SSH
+    - [How to setup SSH keys](https://swcarpentry.github.io/git-novice/07-github.html)
+    - [Create a key, add it to Github repo and your key manager](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
+- With token
+    - [Create it through the Github interface](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+    - Change the `remote` to add it
+
+```git remote set-url origin https://ACCOUNT:TOKEN@github.com/REPO.git```
+
+---
+
+
+## Exercises 3
+
+::: {.callout-tip title="Create your first repository"}
+
+- create one from Github
+- clone it on your computer
+- make a modification + push
+    - CLI or Github desktop
+:::
+
+
+
+---
+
+## Fork it : copy repository to your space
+
+A fork is a copy of a repository (but still connected).
+
+- Experiment with a project independently
+    - Without permissions
+- Propose Changes to the original repository 
+    - Through pull requests.
+
+**3 levels : local, origin, upstream**
+
+---
+
+## Complete worklow {style="text-align: center;"}
+
+![](./img/githubflow.png){fig-align="center"}
+
+---
+
+
+## Pull requests
+
+Propose a code to a repository through a pull request
+
+- Made on an independant branch
+- Proposed to review for the repository
+- Possibility to discuss on it
+
+
+---
+
+
+##
+
+![](./img/githubcompleteworkflow.gif){fig-align="center"}
+
+
+
+---
+
+## Complexity of 3 levels & conflicts
+
+- Upstream, origin and local repos
+- Risks of conflicts
+    - Local repo delayed from origin / from upstream
+- Importance to keep it sync : `pull`
+    - `git remote add upstream https://github.com/otheruser/repo.git`
+    - `git fetch upstream`
+- Solve conflicts
+
+---
+
+
+## GH Flow : facilitate discussions
+
+PR, dedicated branch, PR, and discussions
+
+![](./img/ghflow.png){ fig-align="center"}
+
+---
+
+## Importance of convention, rules & discussion
+
+- Open issues
+- Discuss on PR
+- Read how to contribute
+
+---
+
+## Exercise 4 - PR in practice
+
+::: {.callout-tip title="Contribute to my slides"}
+
+- Fork the slides repository
+- Do a modification (small)
+- Suggest a pull request
+
+:::
+
+
+
+---
+
+
+## Final overview
+
+![](./img/gittotal.png){height="700px" fig-align="center"}
+
+---
+
+## Our cookie-cutter for the project
+
+- A Github organisation
+- A blank repository playing the part of a [cookiecutter](https://github.com/policyinaction/cookiecutter-project
+)
+
+---
+
+
+## Exercises 5
+
+::: {.callout-tip title="Start your project"}
+
+- For each group, one copy of the cookie cutter
+- Add users to the project
+- Write the README.md of your project
+
+:::
+
+
+
+---
+
+## Conclusion
+
+- Locally : track your work
+- In the cloud : work with different computers/services seamlessly
+- Collaborate easily
+- Show your work
+    - Open code foster reproducibility
+
+
+---
+
+## All the commands
+
+![](./img/gitcommands.png){fig-align="center"}
+
+---
+
+## Ressources
+
+- [Version control with Git - Software Carpentry](https://swcarpentry.github.io/git-novice/)
+- [The Turing Way : Version Control](https://book.the-turing-way.org/reproducible-research/open)
+- [Version control with git (for economists)](https://luispfonseca.com/files/slides_git.pdf)
+- [Good practices for statistical projects with R & Git (INSEE)](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R)
+- [Git Reference guidelines](https://git-scm.com/book/en/v2)
+- [An Introduction to Version Control Using GitHub Desktop](https://programminghistorian.org/en/lessons/retired/getting-started-with-github-desktop)
+
+
+
+
+
+
+
+
