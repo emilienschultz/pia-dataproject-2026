@@ -1,4 +1,4 @@
-# Workshop Data project - Policy in Action 2025
+# Workshop Data project - Policy in Action 2026
 
 [Slides](https://emilienschultz.github.io/pia-dataproject-2025)
 
